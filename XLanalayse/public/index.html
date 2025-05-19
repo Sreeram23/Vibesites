@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel Analyzer - Data Insights & Visualizations</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  
+  <!-- Babel for JSX transformation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- SheetJS (xlsx) for Excel parsing -->
+  <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  
+  <!-- Chart.js for visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+    }
+    
+    .glass {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    }
+    
+    .fluid-background {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .fluid-background::before,
+    .fluid-background::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      z-index: -1;
+    }
+    
+    .fluid-background::before {
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0) 60%);
+      animation: fluid-motion 30s ease-in-out infinite alternate;
+    }
+    
+    .fluid-background::after {
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0) 60%);
+      animation: fluid-motion 25s ease-in-out 2s infinite alternate-reverse;
+    }
+    
+    @keyframes fluid-motion {
+      0% {
+        transform: translate(-5%, -5%) rotate(0deg);
+      }
+      25% {
+        transform: translate(5%, 5%) rotate(1deg);
+      }
+      50% {
+        transform: translate(10%, -5%) rotate(2deg);
+      }
+      75% {
+        transform: translate(-10%, 5%) rotate(1deg);
+      }
+      100% {
+        transform: translate(-5%, 10%) rotate(0deg);
+      }
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.5;
+      pointer-events: none;
+      animation: blob-float 15s ease-in-out infinite alternate;
+    }
+    
+    .blob:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.05));
+      top: -200px;
+      right: -100px;
+    }
+    
+    .blob:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.05));
+      bottom: -150px;
+      left: -50px;
+    }
+    
+    .blob:nth-child(3) {
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.3), rgba(244, 114, 182, 0.05));
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    @keyframes blob-float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    .mouse-trail {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated fluid background -->
+  <div class="fluid-background">
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+  
+  <div id="root"></div>
+
+  <!-- Include all scripts with correct type -->
+  <script type="text/babel" src="../src/utils/ExcelParser.js"></script>
+  <script type="text/babel" src="../src/components/FileUploader.jsx"></script>
+  <script type="text/babel" src="../src/components/DataSummary.jsx"></script>
+  <script type="text/babel" src="../src/components/ColumnAnalysis.jsx"></script>
+  <script type="text/babel" src="../src/components/Visualizations.jsx"></script>
+  <script type="text/babel" src="../src/App.jsx"></script>
+  <script type="text/babel" src="../src/index.js"></script>
+</body>
+</html>

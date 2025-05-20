@@ -1,0 +1,261 @@
+/* Graph View */
+.graph-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.graph-canvas {
+  max-width: 100%;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.graph-legend {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.8rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-color.public {
+  background-color: #6fcf97;
+}
+
+.legend-color.private {
+  background-color: #f2994a;
+}
+
+.legend-color.selected {
+  background-color: #4a9eff;
+}
+
+/* Right Panel */
+.right-panel {
+  padding: var(--spacing-md);
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.note-title-input {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  padding: var(--spacing-sm) 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-serif);
+}
+
+.note-title-input:focus {
+  outline: none;
+  border-bottom-color: var(--primary-color);
+}
+
+.editor-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.visibility-toggle, .delete-note {
+  font-size: 1.2rem;
+  padding: var(--spacing-xs);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.visibility-toggle:hover, .delete-note:hover {
+  background-color: var(--border-color);
+}
+
+/* Tags Editor */
+.tags-editor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tag-input {
+  border: none;
+  padding: var(--spacing-xs) 0;
+  font-size: 0.9rem;
+}
+
+.tag-input:focus {
+  outline: none;
+}
+
+.remove-tag {
+  margin-left: var(--spacing-xs);
+  font-size: 0.7rem;
+}
+
+/* Markdown Editor */
+.markdown-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-md);
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.editor-toolbar button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.editor-toolbar button:hover, .editor-toolbar button.active {
+  background-color: var(--background-color);
+}
+
+.markdown-textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  min-height: 300px;
+}
+
+.markdown-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.markdown-preview {
+  flex: 1;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  overflow-y: auto;
+  min-height: 300px;
+}
+
+.markdown-preview h1, .markdown-preview h2, .markdown-preview h3 {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.markdown-preview p {
+  margin-bottom: var(--spacing-md);
+}
+
+.markdown-preview ul, .markdown-preview ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+.markdown-preview a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.markdown-preview a:hover {
+  text-decoration: underline;
+}
+
+.markdown-preview .wiki-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--primary-color);
+}
+
+.markdown-preview .wiki-link.new-note {
+  color: var(--accent-color);
+  border-bottom: 1px dashed var(--accent-color);
+}
+
+/* Note Metadata */
+.note-metadata {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Empty States */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.empty-editor {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 200px 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  
+  .left-sidebar {
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .middle-panel, .right-panel {
+    height: auto;
+    max-height: 50vh;
+  }
+}
